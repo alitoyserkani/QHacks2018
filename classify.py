@@ -7,7 +7,12 @@ def classify(img):
     with open('generated-embeddings/classifier.pkl', 'r') as f:
         (le, clf) = pickle.load(f)
 
-    rep, bounding_box = get_rep(img)
+    res = get_rep(img)
+
+    if res is None:
+        return None
+
+    rep, bounding_box = res
 
     try:
         rep = rep.reshape(1, -1)

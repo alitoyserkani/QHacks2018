@@ -10,12 +10,14 @@ app = flask.Flask(__name__)
 def verify():
     image = flask.request.files['image']
     image.save(os.path.join('/home/ubuntu/haven/', 'image.jpg'))
-    user, confidence = classify(os.path.join('/home/ubuntu/haven/', 'image.jpg'))
+    res = classify(os.path.join('/home/ubuntu/haven/', 'image.jpg'))
 
-    if user is None:
+    if res is None:
         return flask.Response(
             'No match found.',
             204)
+
+    user, confidence = res
 
     data = {
         # 'user': user if confidence > 0.90 else 'unknown',
