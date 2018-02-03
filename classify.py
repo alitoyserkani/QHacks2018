@@ -1,6 +1,7 @@
-from sklearn.mixture import GMM
+# from sklearn.mixture import GMM
+from get_rep import get_rep
 import numpy as np
-import openface
+# import openface
 import pickle
 
 
@@ -21,7 +22,7 @@ def classify(img, args):
     person = le.inverse_transform(maxI)
     confidence = predictions[maxI]
 
-    if isinstance(clf,GMM):
-        dist = np.linalg.norm(rep - clf.means_[maxI])
+    # if isinstance(clf,GMM):
+    #     dist = np.linalg.norm(rep - clf.means_[maxI])
 
     return (person, confidence)
