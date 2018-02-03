@@ -4,7 +4,7 @@ import openface
 import pickle
 
 
-def infer(img, args):
+def classify(img, args):
     with open('generated-embeddings/classifier.pkl', 'r') as f:
         (le, clf) = pickle.load(f)
 
