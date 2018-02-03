@@ -18,8 +18,6 @@ net = openface.TorchNeuralNet(
 
 
 def get_rep(input):
-    # nparr = np.fromstring(input, np.uint8)
-    # img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
     img = cv2.imread(input)
 
     if img is None:

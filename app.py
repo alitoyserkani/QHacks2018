@@ -1,7 +1,6 @@
 import flask
 import os
 
-# from get_rep import get_rep
 from classify import classify
 
 app = flask.Flask(__name__)
@@ -23,6 +22,4 @@ def get_user():
         'confidence': confidence
     }
 
-    return flask.Response(
-            flask.jsonify(data),
-            200)
+    return flask.jsonify(data)
