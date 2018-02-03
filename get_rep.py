@@ -1,3 +1,4 @@
+# import numpy as np
 import cv2
 import openface
 import os
@@ -17,7 +18,9 @@ net = openface.TorchNeuralNet(
 
 
 def get_rep(input):
-    img = cv2.imread(input)
+    # nparr = np.fromstring(input, np.uint8)
+    # img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    img = cv2.imdecode(input, cv2.IMREAD_COLOR)
 
     if img is None:
         return None
