@@ -3,7 +3,7 @@ import numpy as np
 import pickle
 
 
-def classify(img, args):
+def classify(img):
     with open('generated-embeddings/classifier.pkl', 'r') as f:
         (le, clf) = pickle.load(f)
 
