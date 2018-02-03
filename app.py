@@ -8,8 +8,8 @@ app = flask.Flask(__name__)
 
 @app.route('/get_user', methods=['POST'])
 def get_user():
-    image = flask.request.form['image']
-    import pdb; pdb.set_trace()
+    image = flask.request.files['image']
+    import pdb; pdb.set_trace
     user, confidence = classify(image)
 
     if user is None:
