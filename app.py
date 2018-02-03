@@ -6,8 +6,8 @@ from classify import classify
 app = flask.Flask(__name__)
 
 
-@app.route('/get_user', methods=['POST'])
-def get_user():
+@app.route('/verify', methods=['POST'])
+def verify():
     image = flask.request.files['image']
     image.save(os.path.join('/root/haven/', 'image.jpg'))
     user, confidence = classify(os.path.join('/root/haven/', 'image.jpg'))
