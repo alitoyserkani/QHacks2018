@@ -15,7 +15,7 @@ def verify():
     if res is None:
         return flask.Response(
             'No match found.',
-            204)
+            400)
 
     user, confidence = res
 
