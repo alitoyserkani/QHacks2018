@@ -8,6 +8,7 @@ app = flask.Flask(__name__)
 
 @app.route('/get_user', methods=['POST'])
 def get_user():
+    import pdb; pdb.set_trace()
     image = flask.request.files['image']
     image.save("hello.jpg")
     # rep = get_rep(image)
