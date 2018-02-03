@@ -1,7 +1,5 @@
-# from sklearn.mixture import GMM
 from get_rep import get_rep
 import numpy as np
-# import openface
 import pickle
 
 
@@ -18,11 +16,8 @@ def classify(img, args):
         return None
 
     predictions = clf.predict_proba(rep).ravel()
-    maxI = np.argmax(predictions)
-    person = le.inverse_transform(maxI)
-    confidence = predictions[maxI]
-
-    # if isinstance(clf,GMM):
-    #     dist = np.linalg.norm(rep - clf.means_[maxI])
+    max_index = np.argmax(predictions)
+    person = le.inverse_transform(max_index)
+    confidence = predictions[max_index]
 
     return (person, confidence)
