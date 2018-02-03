@@ -24,5 +24,5 @@ def get_user():
     }
 
     return flask.Response(
-            data,
+            flask.jsonify(data),
             200)
