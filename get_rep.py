@@ -2,36 +2,36 @@ import cv2
 import openface
 import os
 
-fileDir = os.path.dirname(os.path.realpath(__file__))
-modelDir = os.path.join(fileDir, '/root/openface/', 'models')
-dlibModelDir = os.path.join(modelDir, 'dlib')
+file_dir = os.path.dirname(os.path.realpath(__file__))
+model_dir = os.path.join(file_dir, '/root/openface/', 'models')
+dlib_model_dir = os.path.join(model_dir, 'dlib')
 
-imgDim = 96
+img_dim = 96
 face_predictor = 'shape_predictor_68_face_landmarks.dat'
 neural_net = 'nn4.small2.v1.t7'
 
-align = openface.AlignDlib(os.path.join(dlibModelDir, face_predictor))
-net = openface.TorchNeuralNet(neural_net, imgDim, False)
+align = openface.AlignDlib(os.path.join(dlib_model_dir, face_predictor))
+net = openface.TorchNeuralNet(neural_net, img_dim, False)
 
 
-def getRep(input):
+def get_rep(input):
     img = cv2.imread(input)
 
     if img is None:
         return None
 
-    rgbImg = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    bb = align.getLargestFaceBoundingBox(rgbImg)
+    rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    bounding_box = align.getLargestFaceBoundingBox(rgb_img)
 
-    if bb is None:
+    if bounding_box is None:
         return None
 
-    alignedImg = align.align(
-        imgDim, rgbImg, bb,
+    aligned_img = align.align(
+        img_dim, rgb_img, bounding_box,
         landmarkIndices=openface.AlignDlib.OUTER_EYES_AND_NOSE)
 
-    if alignedImg is None:
+    if aligned_img is None:
         return None
 
-    rep = net.forward(alignedImg)
-    return (rep, bb)
+    rep = net.forward(aligned_img)
+    return (rep, bounding_box)
