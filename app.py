@@ -18,8 +18,8 @@ def get_user():
             204)
 
     data = {
-        'user': user,
-        'confidence': confidence
+        'user': user if confidence > 0.92 else 'unknown',
+        'confidence': confidence if confidence > 0.92 else 1
     }
 
     return flask.jsonify(data)
