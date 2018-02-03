@@ -8,7 +8,8 @@ app = flask.Flask(__name__)
 
 @app.route('/get_user', methods=['POST'])
 def get_user():
-    image = flask.request.form['image']
+    image = flask.request.files['image']
+    image.save("hello.jpg")
     # rep = get_rep(image)
     # if rep is None:
     #     return flask.Response(
@@ -16,7 +17,7 @@ def get_user():
     #         204)
 
     # rep, bounding_box = rep
-    user, confidence = classify(image)
+    user, confidence = classify("hello.jpg")
 
     if user is None:
         return flask.Response(
