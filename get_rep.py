@@ -3,7 +3,7 @@ import openface
 import os
 
 file_dir = os.path.dirname(os.path.realpath(__file__))
-model_dir = os.path.join(file_dir, '/root/openface/', 'models')
+model_dir = os.path.join(file_dir, '/home/ubuntu/openface/', 'models')
 dlib_model_dir = os.path.join(model_dir, 'dlib')
 openface_model_dir = os.path.join(model_dir, 'openface')
 
