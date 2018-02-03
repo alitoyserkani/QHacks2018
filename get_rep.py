@@ -11,7 +11,8 @@ face_predictor = 'shape_predictor_68_face_landmarks.dat'
 neural_net = 'nn4.small2.v1.t7'
 
 align = openface.AlignDlib(os.path.join(dlib_model_dir, face_predictor))
-net = openface.TorchNeuralNet(neural_net, img_dim, False)
+net = openface.TorchNeuralNet(
+    os.path.join(model_dir, neural_net), img_dim, False)
 
 
 def get_rep(input):
