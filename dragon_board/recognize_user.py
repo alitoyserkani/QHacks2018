@@ -3,6 +3,7 @@ import json
 import sys
 import requests
 import os
+#from ggts import gTTS
 
 DEVICE_NUMBER = 0
 IMAGE_FILE = "output.jpg"
@@ -33,6 +34,10 @@ while no_face:
             first = user.split("-")[0].title()
             last = user.split("-")[1].title()
             print(first + " " + last + " recognised.")
+            # text = "Welcome home " + first + " " + last)
+            # tts = gTTS(text, lang='en')
+            # tts.save("welcome_msg.mp3")
+            # os.system("mp321 welcome_msg.mp3")
 
             # filename = sys/class/gpio/gpio36
             # os.system('./Electronics/turnOnGPIO.sh')
