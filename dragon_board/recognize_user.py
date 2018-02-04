@@ -28,7 +28,7 @@ while no_face:
         user = json.loads(response.text)['user']
         confidence = json.loads(response.text)['confidence']
 
-        if confidence > 0.95:
+        if confidence > 0.97:
             # home_actions(user)
             first = user.split("-")[0].title()
             last = user.split("-")[1].title()
