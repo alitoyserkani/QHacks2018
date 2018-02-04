@@ -20,8 +20,6 @@ def verify():
     user, confidence = res
 
     data = {
-        # 'user': user if confidence > 0.90 else 'unknown',
-        # 'confidence': confidence if confidence > 0.90 else 1
         'user': user,
         'confidence': confidence
     }
