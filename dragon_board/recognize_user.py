@@ -26,100 +26,99 @@ gpioi = ((GPIO_I, 'out'),)
 gpiok = ((GPIO_K, 'out'),)
 
 steps = 0
-direction = True
+direction = 1
 
 
-def stepper(xw):
-    for x in range(xw):
-        if steps == 0:
-            with GPIO(gpioc) as gpio:
-                gpio.digital_write(GPIO_C, GPIO.LOW)
-            with GPIO(gpioe) as gpio:
-                gpio.digital_write(GPIO_E, GPIO.LOW)
-            with GPIO(gpioi) as gpio:
-                gpio.digital_write(GPIO_I, GPIO.LOW)
-            with GPIO(gpiok) as gpio:
-                gpio.digital_write(GPIO_K, GPIO.HIGH)
-        elif steps == 1:
-            with GPIO(gpioc) as gpio:
-                gpio.digital_write(GPIO_C, GPIO.LOW)
-            with GPIO(gpioe) as gpio:
-                gpio.digital_write(GPIO_E, GPIO.LOW)
-            with GPIO(gpioi) as gpio:
-                gpio.digital_write(GPIO_I, GPIO.HIGH)
-            with GPIO(gpiok) as gpio:
-                gpio.digital_write(GPIO_K, GPIO.HIGH)
+def stepper():
+    if steps == 0:
+        with GPIO(gpioc) as gpio:
+            gpio.digital_write(GPIO_C, GPIO.LOW)
+        with GPIO(gpioe) as gpio:
+            gpio.digital_write(GPIO_E, GPIO.LOW)
+        with GPIO(gpioi) as gpio:
+            gpio.digital_write(GPIO_I, GPIO.LOW)
+        with GPIO(gpiok) as gpio:
+            gpio.digital_write(GPIO_K, GPIO.HIGH)
+    elif steps == 1:
+        with GPIO(gpioc) as gpio:
+            gpio.digital_write(GPIO_C, GPIO.LOW)
+        with GPIO(gpioe) as gpio:
+            gpio.digital_write(GPIO_E, GPIO.LOW)
+        with GPIO(gpioi) as gpio:
+            gpio.digital_write(GPIO_I, GPIO.HIGH)
+        with GPIO(gpiok) as gpio:
+            gpio.digital_write(GPIO_K, GPIO.HIGH)
 
-        elif steps == 2:
-            with GPIO(gpioc) as gpio:
-                gpio.digital_write(GPIO_C, GPIO.LOW)
-            with GPIO(gpioe) as gpio:
-                gpio.digital_write(GPIO_E, GPIO.LOW)
-            with GPIO(gpioi) as gpio:
-                gpio.digital_write(GPIO_I, GPIO.HIGH)
-            with GPIO(gpiok) as gpio:
-                gpio.digital_write(GPIO_K, GPIO.LOW)
+    elif steps == 2:
+        with GPIO(gpioc) as gpio:
+            gpio.digital_write(GPIO_C, GPIO.LOW)
+        with GPIO(gpioe) as gpio:
+            gpio.digital_write(GPIO_E, GPIO.LOW)
+        with GPIO(gpioi) as gpio:
+            gpio.digital_write(GPIO_I, GPIO.HIGH)
+        with GPIO(gpiok) as gpio:
+            gpio.digital_write(GPIO_K, GPIO.LOW)
 
-        elif steps == 3:
-            with GPIO(gpioc) as gpio:
-                gpio.digital_write(GPIO_C, GPIO.LOW)
-            with GPIO(gpioe) as gpio:
-                gpio.digital_write(GPIO_E, GPIO.HIGH)
-            with GPIO(gpioi) as gpio:
-                gpio.digital_write(GPIO_I, GPIO.HIGH)
-            with GPIO(gpiok) as gpio:
-                gpio.digital_write(GPIO_K, GPIO.LOW)
+    elif steps == 3:
+        with GPIO(gpioc) as gpio:
+            gpio.digital_write(GPIO_C, GPIO.LOW)
+        with GPIO(gpioe) as gpio:
+            gpio.digital_write(GPIO_E, GPIO.HIGH)
+        with GPIO(gpioi) as gpio:
+            gpio.digital_write(GPIO_I, GPIO.HIGH)
+        with GPIO(gpiok) as gpio:
+            gpio.digital_write(GPIO_K, GPIO.LOW)
 
-        elif steps == 4:
-            with GPIO(gpioc) as gpio:
-                gpio.digital_write(GPIO_C, GPIO.LOW)
-            with GPIO(gpioe) as gpio:
-                gpio.digital_write(GPIO_E, GPIO.HIGH)
-            with GPIO(gpioi) as gpio:
-                gpio.digital_write(GPIO_I, GPIO.LOW)
-            with GPIO(gpiok) as gpio:
-                gpio.digital_write(GPIO_K, GPIO.LOW)
+    elif steps == 4:
+        with GPIO(gpioc) as gpio:
+            gpio.digital_write(GPIO_C, GPIO.LOW)
+        with GPIO(gpioe) as gpio:
+            gpio.digital_write(GPIO_E, GPIO.HIGH)
+        with GPIO(gpioi) as gpio:
+            gpio.digital_write(GPIO_I, GPIO.LOW)
+        with GPIO(gpiok) as gpio:
+            gpio.digital_write(GPIO_K, GPIO.LOW)
 
-        elif steps == 5:
-            with GPIO(gpioc) as gpio:
-                gpio.digital_write(GPIO_C, GPIO.HIGH)
-            with GPIO(gpioe) as gpio:
-                gpio.digital_write(GPIO_E, GPIO.HIGH)
-            with GPIO(gpioi) as gpio:
-                gpio.digital_write(GPIO_I, GPIO.LOW)
-            with GPIO(gpiok) as gpio:
-                gpio.digital_write(GPIO_K, GPIO.LOW)
+    elif steps == 5:
+        with GPIO(gpioc) as gpio:
+            gpio.digital_write(GPIO_C, GPIO.HIGH)
+        with GPIO(gpioe) as gpio:
+            gpio.digital_write(GPIO_E, GPIO.HIGH)
+        with GPIO(gpioi) as gpio:
+            gpio.digital_write(GPIO_I, GPIO.LOW)
+        with GPIO(gpiok) as gpio:
+            gpio.digital_write(GPIO_K, GPIO.LOW)
 
-        elif steps == 6:
-            with GPIO(gpioc) as gpio:
-                gpio.digital_write(GPIO_C, GPIO.HIGH)
-            with GPIO(gpioe) as gpio:
-                gpio.digital_write(GPIO_E, GPIO.LOW)
-            with GPIO(gpioi) as gpio:
-                gpio.digital_write(GPIO_I, GPIO.LOW)
-            with GPIO(gpiok) as gpio:
-                gpio.digital_write(GPIO_K, GPIO.LOW)
-        elif steps == 7:
-            with GPIO(gpioc) as gpio:
-                gpio.digital_write(GPIO_C, GPIO.HIGH)
-            with GPIO(gpioe) as gpio:
-                gpio.digital_write(GPIO_E, GPIO.LOW)
-            with GPIO(gpioi) as gpio:
-                gpio.digital_write(GPIO_I, GPIO.LOW)
-            with GPIO(gpiok) as gpio:
-                gpio.digital_write(GPIO_K, GPIO.HIGH)
-        else:
-            with GPIO(gpioc) as gpio:
-                gpio.digital_write(GPIO_C, GPIO.LOW)
-            with GPIO(gpioe) as gpio:
-                gpio.digital_write(GPIO_E, GPIO.LOW)
-            with GPIO(gpioi) as gpio:
-                gpio.digital_write(GPIO_I, GPIO.LOW)
-            with GPIO(gpiok) as gpio:
-                gpio.digital_write(GPIO_K, GPIO.LOW)
+    elif steps == 6:
+        with GPIO(gpioc) as gpio:
+            gpio.digital_write(GPIO_C, GPIO.HIGH)
+        with GPIO(gpioe) as gpio:
+            gpio.digital_write(GPIO_E, GPIO.LOW)
+        with GPIO(gpioi) as gpio:
+            gpio.digital_write(GPIO_I, GPIO.LOW)
+        with GPIO(gpiok) as gpio:
+            gpio.digital_write(GPIO_K, GPIO.LOW)
+    elif steps == 7:
+        with GPIO(gpioc) as gpio:
+            gpio.digital_write(GPIO_C, GPIO.HIGH)
+        with GPIO(gpioe) as gpio:
+            gpio.digital_write(GPIO_E, GPIO.LOW)
+        with GPIO(gpioi) as gpio:
+            gpio.digital_write(GPIO_I, GPIO.LOW)
+        with GPIO(gpiok) as gpio:
+            gpio.digital_write(GPIO_K, GPIO.HIGH)
+    else:
+        with GPIO(gpioc) as gpio:
+            gpio.digital_write(GPIO_C, GPIO.LOW)
+        with GPIO(gpioe) as gpio:
+            gpio.digital_write(GPIO_E, GPIO.LOW)
+        with GPIO(gpioi) as gpio:
+            gpio.digital_write(GPIO_I, GPIO.LOW)
+        with GPIO(gpiok) as gpio:
+            gpio.digital_write(GPIO_K, GPIO.LOW)
 
 
-def set_direction():
+def set_steps():
     global steps
     steps += direction
 
@@ -132,20 +131,20 @@ def set_direction():
 def open_door():
     global direction
     direction = 1
-    for step in range(3):
-        time.sleep(0.5)
-        stepper(1)
-        set_direction()
+    for step in range(7):
+        time.sleep(1.5)
+        stepper()
+        set_steps()
     stop_door()
 
 
 def close_door():
     global direction
     direction = -1
-    for step in range(3):
-        time.sleep(0.5)
-        stepper(1)
-        set_direction()
+    for step in range(7):
+        time.sleep(1.5)
+        stepper()
+        set_steps()
     stop_door()
 
 
