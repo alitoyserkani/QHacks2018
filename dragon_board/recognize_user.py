@@ -1,5 +1,5 @@
-from gpio_96boards import GPIO
 # from ggts import gTTS
+from gpio_96boards import GPIO
 import cv2
 import json
 import os
@@ -20,20 +20,152 @@ GPIO_K = GPIO.gpio_id('GPIO_K')
 light_pins = (
     (GPIO_A, 'out'),
 )
-motor_pins = (
-    (GPIO_C, 'out'),
-    (GPIO_E, 'out'),
-    (GPIO_I, 'out'),
-    (GPIO_K, 'out'),
-)
+gpioc = ((GPIO_C, 'out'),)
+gpioe = ((GPIO_E, 'out'),)
+gpioi = ((GPIO_I, 'out'),)
+gpiok = ((GPIO_K, 'out'),)
+
+steps = 0
+direction = True
+
+
+def stepper(xw):
+    for x in range(xw):
+        if steps == 0:
+            with GPIO(gpioc) as gpio:
+                gpio.digital_write(GPIO_C, GPIO.LOW)
+            with GPIO(gpioe) as gpio:
+                gpio.digital_write(GPIO_E, GPIO.LOW)
+            with GPIO(gpioi) as gpio:
+                gpio.digital_write(GPIO_I, GPIO.LOW)
+            with GPIO(gpiok) as gpio:
+                gpio.digital_write(GPIO_K, GPIO.HIGH)
+        elif steps == 1:
+            with GPIO(gpioc) as gpio:
+                gpio.digital_write(GPIO_C, GPIO.LOW)
+            with GPIO(gpioe) as gpio:
+                gpio.digital_write(GPIO_E, GPIO.LOW)
+            with GPIO(gpioi) as gpio:
+                gpio.digital_write(GPIO_I, GPIO.HIGH)
+            with GPIO(gpiok) as gpio:
+                gpio.digital_write(GPIO_K, GPIO.HIGH)
+
+        elif steps == 2:
+            with GPIO(gpioc) as gpio:
+                gpio.digital_write(GPIO_C, GPIO.LOW)
+            with GPIO(gpioe) as gpio:
+                gpio.digital_write(GPIO_E, GPIO.LOW)
+            with GPIO(gpioi) as gpio:
+                gpio.digital_write(GPIO_I, GPIO.HIGH)
+            with GPIO(gpiok) as gpio:
+                gpio.digital_write(GPIO_K, GPIO.LOW)
+
+        elif steps == 3:
+            with GPIO(gpioc) as gpio:
+                gpio.digital_write(GPIO_C, GPIO.LOW)
+            with GPIO(gpioe) as gpio:
+                gpio.digital_write(GPIO_E, GPIO.HIGH)
+            with GPIO(gpioi) as gpio:
+                gpio.digital_write(GPIO_I, GPIO.HIGH)
+            with GPIO(gpiok) as gpio:
+                gpio.digital_write(GPIO_K, GPIO.LOW)
+
+        elif steps == 4:
+            with GPIO(gpioc) as gpio:
+                gpio.digital_write(GPIO_C, GPIO.LOW)
+            with GPIO(gpioe) as gpio:
+                gpio.digital_write(GPIO_E, GPIO.HIGH)
+            with GPIO(gpioi) as gpio:
+                gpio.digital_write(GPIO_I, GPIO.LOW)
+            with GPIO(gpiok) as gpio:
+                gpio.digital_write(GPIO_K, GPIO.LOW)
+
+        elif steps == 5:
+            with GPIO(gpioc) as gpio:
+                gpio.digital_write(GPIO_C, GPIO.HIGH)
+            with GPIO(gpioe) as gpio:
+                gpio.digital_write(GPIO_E, GPIO.HIGH)
+            with GPIO(gpioi) as gpio:
+                gpio.digital_write(GPIO_I, GPIO.LOW)
+            with GPIO(gpiok) as gpio:
+                gpio.digital_write(GPIO_K, GPIO.LOW)
+
+        elif steps == 6:
+            with GPIO(gpioc) as gpio:
+                gpio.digital_write(GPIO_C, GPIO.HIGH)
+            with GPIO(gpioe) as gpio:
+                gpio.digital_write(GPIO_E, GPIO.LOW)
+            with GPIO(gpioi) as gpio:
+                gpio.digital_write(GPIO_I, GPIO.LOW)
+            with GPIO(gpiok) as gpio:
+                gpio.digital_write(GPIO_K, GPIO.LOW)
+        elif steps == 7:
+            with GPIO(gpioc) as gpio:
+                gpio.digital_write(GPIO_C, GPIO.HIGH)
+            with GPIO(gpioe) as gpio:
+                gpio.digital_write(GPIO_E, GPIO.LOW)
+            with GPIO(gpioi) as gpio:
+                gpio.digital_write(GPIO_I, GPIO.LOW)
+            with GPIO(gpiok) as gpio:
+                gpio.digital_write(GPIO_K, GPIO.HIGH)
+        else:
+            with GPIO(gpioc) as gpio:
+                gpio.digital_write(GPIO_C, GPIO.LOW)
+            with GPIO(gpioe) as gpio:
+                gpio.digital_write(GPIO_E, GPIO.LOW)
+            with GPIO(gpioi) as gpio:
+                gpio.digital_write(GPIO_I, GPIO.LOW)
+            with GPIO(gpiok) as gpio:
+                gpio.digital_write(GPIO_K, GPIO.LOW)
+
+
+def set_direction():
+    global steps
+    steps += direction
+
+    if steps > 7:
+        steps = 0
+    elif steps < 0:
+        steps = 7
+
+
+def open_door():
+    global direction
+    direction = 1
+    for step in range(3):
+        time.sleep(0.5)
+        stepper(1)
+        set_direction()
+    stop_door()
+
+
+def close_door():
+    global direction
+    direction = -1
+    for step in range(3):
+        time.sleep(0.5)
+        stepper(1)
+        set_direction()
+    stop_door()
+
+
+def stop_door():
+    with GPIO(gpioc) as gpio:
+        gpio.digital_write(GPIO_C, GPIO.LOW)
+    with GPIO(gpioe) as gpio:
+        gpio.digital_write(GPIO_E, GPIO.LOW)
+    with GPIO(gpioi) as gpio:
+        gpio.digital_write(GPIO_I, GPIO.LOW)
+    with GPIO(gpiok) as gpio:
+        gpio.digital_write(GPIO_K, GPIO.LOW)
 
 
 def turn_on(gpio):
-    gpio.digital_write(GPIO_A, GPIO.HIGH)
+    gpio.digital_write(GPIO_A, GPIO.GPIO.HIGH)
 
 
 def turn_off(gpio):
-    gpio.digital_write(GPIO_A, GPIO.LOW)
+    gpio.digital_write(GPIO_A, GPIO.GPIO.LOW)
 
 
 def main():
@@ -68,10 +200,9 @@ def main():
 
                 with GPIO(light_pins) as gpio:
                     turn_on(gpio)
-                with GPIO(motor_pins) as gpio:
-                    turn_on(gpio)
-                    time.sleep(3)
-                    turn_off(gpio)
+                open_door()
+                time.sleep(3)
+                close_door()
 
                 # filename = sys/class/gpio/gpio12
                 # os.system('./Electronics/turnOnGPIO.sh')
@@ -80,17 +211,9 @@ def main():
                 if k == 'q':
                     with GPIO(light_pins) as gpio:
                         turn_off(gpio)
-                    with GPIO(motor_pins) as gpio:
-                        turn_on(gpio)
-                        time.sleep(3)
-                        turn_off(gpio)
                     sys.exit(1)
                 else:
                     with GPIO(light_pins) as gpio:
-                        turn_off(gpio)
-                    with GPIO(motor_pins) as gpio:
-                        turn_on(gpio)
-                        time.sleep(3)
                         turn_off(gpio)
                     # filename = ~/sys/class/gpio/gpio12
                     # os.system('./Electronics/turnOnGPIO.sh')
