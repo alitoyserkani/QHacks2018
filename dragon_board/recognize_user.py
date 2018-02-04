@@ -30,8 +30,8 @@ while no_face:
 
         if confidence > 0.95:
             # home_actions(user)
-            first = user.split("-")[0]
-            last = user.split("-")[1]
+            first = user.split("-")[0].title()
+            last = user.split("-")[1].title()
             print(first + " " + last + " recognised.")
 
             # filename = sys/class/gpio/gpio36
