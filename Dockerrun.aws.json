@@ -1,0 +1,5 @@
+{
+    "AWSEBDockerrunVersion": 1,
+    "Image": "bamos/openface",
+    "Ports": 5000,
+}
