@@ -20,7 +20,7 @@ while no_face:
 
     response = requests.post(API, files={
         "image": open(
-            '/home/linaro/Documents/AWS_IOT_Test/haven/output.jpg', 'r')})
+            '/home/linaro/haven/dragon_board/output.jpg', 'r')})
 
     print("Received web response.")
 
