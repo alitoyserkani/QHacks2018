@@ -1,6 +1,11 @@
-# Haven
+<p align="center">
+  <img src="https://i.cubeupload.com/yYCxpA.png">
+  <h1 align="center">Haven</h1>
+</p>
 
-![alt text](http://i.cubeupload.com/kQXcUb.jpg)
+<p align="center">
+  <img src="http://i.cubeupload.com/kQXcUb.jpg">
+</p>
 
 ### Summary
 
@@ -10,8 +15,12 @@
 
 *Haven* is not just an app or a function. It is a platform. Haven utilizes face recognition to detect, at the front door, faces that belong in the household. It enables IoT home devices to adjust features in the house such as unlocking the door, adjusting lighting, heat, and anything else the user might want to create the most welcoming experience. It leaves behind the days of coming home to a lonely, stark house after a long tiring day. 
 
-![alt text](http://i.cubeupload.com/7CkT60.jpg)
-![alt text](http://i.cubeupload.com/I9tPeK.jpg)
+<p align="center">
+  <img src="http://i.cubeupload.com/7CkT60.jpg">
+</p>
+<p align="center">
+  <img src="http://i.cubeupload.com/I9tPeK.jpg">
+</p>
 
 ### Technologies Used
 
