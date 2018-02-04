@@ -161,11 +161,11 @@ def stop_door():
 
 
 def turn_on(gpio):
-    gpio.digital_write(GPIO_A, GPIO.GPIO.HIGH)
+    gpio.digital_write(GPIO_A, GPIO.HIGH)
 
 
 def turn_off(gpio):
-    gpio.digital_write(GPIO_A, GPIO.GPIO.LOW)
+    gpio.digital_write(GPIO_A, GPIO.LOW)
 
 
 def main():
